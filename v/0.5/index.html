@@ -1,0 +1,2420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Digital Construction Energy</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    
+    <style>
+        #pylode {
+            position: fixed;
+            top: 130px;
+            left: -60px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+        #pylode a {
+            font-size: 2em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+        #pylode a:hover {
+            color: #333;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 5px 0 5px 0;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding:5px;
+            background-color: #F4FFFF;
+        }
+
+        ul.hierarchy {
+            border: 1px solid navy;
+            padding: 5px 25px 5px 25px;
+            background-color: #F4FFFF;
+        }
+
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin:5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: left
+        }
+        h1, h2, h3 {
+            color: #005A9C; background: white
+        }
+        h1 {
+            font: 170% sans-serif;
+            line-height: 110%;
+        }
+        h2 {
+            font: 140% sans-serif;
+            margin-top:40px;
+        }
+        h3 {
+            font: 120% sans-serif;
+            margin-top: 3px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+        h4 { font: bold 100% sans-serif }
+        h5 { font: italic 100% sans-serif }
+        h6 { font: small-caps 100% sans-serif }
+
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: justify;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+        }
+
+        :link { color: #00C; background: transparent }
+        :visited { color: #609; background: transparent }
+        a:active { color: #C00; background: transparent }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-cp,
+        .sup-cl {
+            cursor:help;
+            margin-left: 3px;
+        }
+
+        .sup-c {
+            color:orange;
+        }
+
+        .sup-op {
+            color:navy;
+        }
+
+        .sup-fp {
+            color:lightskyblue;
+        }
+
+        .sup-dp {
+            color:green;
+        }
+
+        .sup-ap {
+            color:darkred;
+        }
+
+        .sup-p {
+            color:black;
+        }
+
+        .sup-ni {
+            color:brown;
+        }
+
+        .sup-cp {
+            color:orange;
+        }
+
+        .sup-cl {
+            color:darkred;
+        }
+
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
+    </style>
+    
+    <script type="application/ld+json">
+      [
+  {
+    "@id": "https://w3id.org/digitalconstruction/0.5/Energy",
+    "@type": [
+      "https://schema.org/DefinedTermSet"
+    ],
+    "https://schema.org/description": [
+      {
+        "@value": "<p>An ontology for energy services, defined as an extension of SAREF to address lifecycle assessment (LCA) parameters for the energy systems, especially needed in renovation projects.</p>"
+      }
+    ],
+    "https://schema.org/license": [
+      {
+        "@id": "https://creativecommons.org/licenses/by/4.0/"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Digital Construction Energy"
+      }
+    ]
+  }
+]
+    </script>
+</head>
+<body>
+  <div id="pylode">made by <a href="http://github.com/rdflib/pyLODE">
+    <span style="color:#329545;">p</span><span style="color:#f9cb33;">y</span>LODE</a>
+    <span style="font-size:smaller;">2.8.5</span>
+  </div>
+  <h1>Digital Construction Energy</h1>
+<section id="metadata">
+    <h2 style="display:none;">Metadata</h2>
+    <dl>
+        <dt>URI</dt>
+        <dd><code>https://w3id.org/digitalconstruction/0.5/Energy</code></dd>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/publisher">Publisher</a>(s)</dt>
+        <dd>
+            SUITE5<br/>
+        </dd>
+        <dt><a class="proplink" href="https://www.dublincore.org/specifications/dublin-core/dcmi-terms/#http://purl.org/dc/terms/creator">Creator</a>(s)</dt>
+        <dd>
+            Kostas Tsatsakis (kostas@suite5.eu)<br/>
+            Spiros Kousouris (spiros@suite5.eu)<br/>
+        </dd>
+        <dt>Imports</dt>
+        <dd>
+            <a href="https://w3id.org/digitalconstruction/0.5/Information/information.ttl">https://w3id.org/digitalconstruction/0.5/Information/information.ttl</a><br/>
+        </dd>
+        <dt>License</dt>
+        <dd><a href="https://creativecommons.org/licenses/by/4.0/">https://creativecommons.org/licenses/by/4.0/</a></dd>
+        <dt>Ontology RDF</dt>
+        <dd><a href="energy.ttl">RDF (turtle)</a></dd>
+    </dl>
+    <h2>Description</h2>
+    <div id="description">
+        <p>An ontology for energy services, defined as an extension of SAREF to address lifecycle assessment (LCA) parameters for the energy systems, especially needed in renovation projects.</p>
+    </div>
+</section>
+<section id="toc">
+    <h2>Table of Contents</h2>
+    <ol>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#objectproperties">Object Properties</a></li>
+        <li><a href="#datatypeproperties">Datatype Properties</a></li>
+        <li><a href="#annotationproperties">Annotation Properties</a></li>
+        <li><a href="#namedindividuals">Named Individuals</a></li>
+        <li><a href="#namespaces">Namespaces</a></li>
+        <li><a href="#legend">Legend</a></li>
+    </ol>
+</section>
+<section id="overview">
+    <h2>Overview</h2>
+    <div class="figure">
+        <div style="width:500px; height:50px; background-color: lightgrey; border:solid 2px grey; padding:10px;margin-bottom:5px; text-align:center;">Pictures say 1,000 words</div>
+        <div class="caption"><strong>Figure 1:</strong> Ontology overview</div>
+    </div>
+</section>
+  <section id="classes">
+    <h2>Classes <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#Actuator">Actuator</a></li>
+        <li><a href="#ActuatorLevel">ActuatorLevel</a></li>
+        <li><a href="#AnnualCoolingEnergyConsumptionPerArea">AnnualCoolingEnergyConsumptionPerArea</a></li>
+        <li><a href="#AnnualElectricityConsumptionPerArea">AnnualElectricityConsumptionPerArea</a></li>
+        <li><a href="#AnnualHeatingEnergyConsumptionPerArea">AnnualHeatingEnergyConsumptionPerArea</a></li>
+        <li><a href="#AnnualOperationalCostPerArea">AnnualOperationalCostPerArea</a></li>
+        <li><a href="#AnnualPrimaryEnergyConsumptionPerArea">AnnualPrimaryEnergyConsumptionPerArea</a></li>
+        <li><a href="#AnnualThermalDiscomfortHours">AnnualThermalDiscomfortHours</a></li>
+        <li><a href="#BaselineProfile">BaselineProfile</a></li>
+        <li><a href="#BatteryStorage">BatteryStorage</a></li>
+        <li><a href="#CapitalCost">CapitalCost</a></li>
+        <li><a href="#CombinedHeatPower">CombinedHeatPower</a></li>
+        <li><a href="#ComfortPreservation">ComfortPreservation</a></li>
+        <li><a href="#Device">Device</a></li>
+        <li><a href="#DeviceConstruction">DeviceConstruction</a></li>
+        <li><a href="#DeviceDeconstruction">DeviceDeconstruction</a></li>
+        <li><a href="#DeviceEndOfLife">DeviceEndOfLife</a></li>
+        <li><a href="#DeviceInstallation">DeviceInstallation</a></li>
+        <li><a href="#DeviceLifecyclePhase">DeviceLifecyclePhase</a></li>
+        <li><a href="#DeviceMaintenance">DeviceMaintenance</a></li>
+        <li><a href="#DeviceManufacturing">DeviceManufacturing</a></li>
+        <li><a href="#DeviceMaterialSupply">DeviceMaterialSupply</a></li>
+        <li><a href="#DeviceOperation">DeviceOperation</a></li>
+        <li><a href="#DeviceProduction">DeviceProduction</a></li>
+        <li><a href="#DeviceRepair">DeviceRepair</a></li>
+        <li><a href="#DeviceReplacement">DeviceReplacement</a></li>
+        <li><a href="#DeviceTransport">DeviceTransport</a></li>
+        <li><a href="#DeviceTransportation">DeviceTransportation</a></li>
+        <li><a href="#DeviceUse">DeviceUse</a></li>
+        <li><a href="#DieselGenerator">DieselGenerator</a></li>
+        <li><a href="#Disposal">Disposal</a></li>
+        <li><a href="#ElectricVehicle">ElectricVehicle</a></li>
+        <li><a href="#EnergyConsumption">EnergyConsumption</a></li>
+        <li><a href="#EnergyConsumptionStatistics">EnergyConsumptionStatistics</a></li>
+        <li><a href="#EnergyStatistics">EnergyStatistics</a></li>
+        <li><a href="#EngineeringCost">EngineeringCost</a></li>
+        <li><a href="#Flexibility">Flexibility</a></li>
+        <li><a href="#Generator">Generator</a></li>
+        <li><a href="#InformationContentEntity">InformationContentEntity</a></li>
+        <li><a href="#LifeCycleAssesment">LifeCycleAssesment</a></li>
+        <li><a href="#LifecycleCost">LifecycleCost</a></li>
+        <li><a href="#Load">Load</a></li>
+        <li><a href="#MaintenanceCost">MaintenanceCost</a></li>
+        <li><a href="#OccupancyComfort">OccupancyComfort</a></li>
+        <li><a href="#Operational">Operational</a></li>
+        <li><a href="#OperationalCost">OperationalCost</a></li>
+        <li><a href="#Photovoltaics">Photovoltaics</a></li>
+        <li><a href="#PowerStatistics">PowerStatistics</a></li>
+        <li><a href="#Profile">Profile</a></li>
+        <li><a href="#Property">Property</a></li>
+        <li><a href="#QuantitativeProperty">QuantitativeProperty</a></li>
+        <li><a href="#RenewableEnergySupplyShare">RenewableEnergySupplyShare</a></li>
+        <li><a href="#RenovationCost">RenovationCost</a></li>
+        <li><a href="#RenovationPaybackTime">RenovationPaybackTime</a></li>
+        <li><a href="#RenovationScenario">RenovationScenario</a></li>
+        <li><a href="#RenovationScenarioQuality">RenovationScenarioQuality</a></li>
+        <li><a href="#Reward">Reward</a></li>
+        <li><a href="#Scenario">Scenario</a></li>
+        <li><a href="#SelfConsumptionOptimization">SelfConsumptionOptimization</a></li>
+        <li><a href="#Service">Service</a></li>
+        <li><a href="#ServiceAggregator">ServiceAggregator</a></li>
+        <li><a href="#Statistics">Statistics</a></li>
+        <li><a href="#Storage">Storage</a></li>
+        <li><a href="#WasteDisposal">WasteDisposal</a></li>
+        <li><a href="#WindTurbine">WindTurbine</a></li>
+    </ul>
+    <div class="entity class" id="Actuator">
+        <h3>Actuator<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#Actuator</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://w3id.org/digitalconstruction/0.5/Entities#Device">dice:Device</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#ActuatorLevel">ActuatorLevel</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ActuatorLevel">
+        <h3>ActuatorLevel<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#ActuatorLevel</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Independent from the ActuatorSwitch class, the ActuatorLevel class enables a user or application to model LEVEL commands (start, up, percentageAbsolute, relative, etc.). This can be used to dim a light, set the speed of an electric motor, etc.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#Actuator">Actuator</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AnnualCoolingEnergyConsumptionPerArea">
+        <h3>AnnualCoolingEnergyConsumptionPerArea<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#AnnualCoolingEnergyConsumptionPerArea</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Annual cooling energy consumption of a building, in kWh/m2</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#EnergyConsumption">EnergyConsumptionQuality</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AnnualElectricityConsumptionPerArea">
+        <h3>AnnualElectricityConsumptionPerArea<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#AnnualElectricityConsumptionPerArea</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Annual electricity consumption of a building, in kWh/m2</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#EnergyConsumption">EnergyConsumptionQuality</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AnnualHeatingEnergyConsumptionPerArea">
+        <h3>AnnualHeatingEnergyConsumptionPerArea<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#AnnualHeatingEnergyConsumptionPerArea</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Annual heating energy consumption of a building, in kWh/m2</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#EnergyConsumption">EnergyConsumptionQuality</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AnnualOperationalCostPerArea">
+        <h3>AnnualOperationalCostPerArea<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#AnnualOperationalCostPerArea</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Annual operational energy costs in €/floor-m2</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#RenovationCost">RenovationCostQuality</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AnnualPrimaryEnergyConsumptionPerArea">
+        <h3>AnnualPrimaryEnergyConsumptionPerArea<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#AnnualPrimaryEnergyConsumptionPerArea</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Annual primary energy consumption of a building, in kWh/m2</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#EnergyConsumption">EnergyConsumptionQuality</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="AnnualThermalDiscomfortHours">
+        <h3>AnnualThermalDiscomfortHours<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#AnnualThermalDiscomfortHours</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Number of hours that the temperature of the bearer is above 27 degrees celsius</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#OccupancyComfort">OccupancyComfortQuality</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="BaselineProfile">
+        <h3>BaselineProfile<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#BaselineProfile</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Baseline profile is gathered before changes and it acts as a reference to evaluate the impact of the changes</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://w3id.org/digitalconstruction/0.5/Information#Profile">https://w3id.org/digitalconstruction/0.5/Information#Profile</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="BatteryStorage">
+        <h3>BatteryStorage<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#BatteryStorage</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Residential, behind the meter battery system</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#Storage">Storage</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="CapitalCost">
+        <h3>CapitalCost<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#CapitalCost</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The capital cost required for the investment on Energy Systems</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#LifecycleCost">LifeCycleCost</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="CombinedHeatPower">
+        <h3>CombinedHeatPower<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#CombinedHeatPower</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#Generator">Generator</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ComfortPreservation">
+        <h3>ComfortPreservation<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#ComfortManagement</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>An automation service offered to the users on the way to ensure comfort preservation</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://w3id.org/digitalconstruction/0.5/Processes#Service">https://w3id.org/digitalconstruction/0.5/Processes#Service</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="DeviceInstallation">
+        <h3>DeviceInstallation<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#ConsInstallation</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Installation of the energy system</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#DeviceConstruction">Construction</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="DeviceTransportation">
+        <h3>DeviceTransportation<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#ConsTransport</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Transport of Energy System to the destination</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#DeviceConstruction">Construction</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="DeviceConstruction">
+        <h3>DeviceConstruction<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#Construction</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Construction phase of renovation</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#LifeCycleAssesment">LifeCycleAssesment</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#DeviceTransportation">ConsTransport</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#DeviceInstallation">ConsInstallation</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="DeviceDeconstruction">
+        <h3>DeviceDeconstruction<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#Deconstruction</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The deconstruction of Energy System</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#DeviceEndOfLife">EndofLife</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="DeviceLifecyclePhase">
+        <h3>DeviceLifecyclePhase<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#DeviceLifecyclePhase</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Device lifecycle phases cover the whole lifecycle of a device</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#DeviceProduction">DeviceProduction</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#DeviceUse">DeviceUse</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="DeviceMaintenance">
+        <h3>DeviceMaintenance<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#DeviceMaintenance</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#DeviceUse">DeviceUse</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="DeviceManufacturing">
+        <h3>DeviceManufacturing<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#DeviceManufacturing</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Manufacturing stage for the Energy System</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#DeviceProduction">DeviceProduction</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="DeviceMaterialSupply">
+        <h3>DeviceMaterialSupply<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#DeviceMaterialSupply</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Material Supply is the early stage of the Energy System production</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#DeviceProduction">DeviceProduction</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="DeviceOperation">
+        <h3>DeviceOperation<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#DeviceOperation</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Actual Operation of the energy system</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#DeviceUse">DeviceUse</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="DeviceProduction">
+        <h3>DeviceProduction<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#DeviceProduction</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Production phase for the Energy System</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#DeviceLifecyclePhase">DeviceLifecyclePhase</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#DeviceManufacturing">DeviceManufacturing</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#DeviceMaterialSupply">DeviceMaterialSupply</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="DeviceRepair">
+        <h3>DeviceRepair<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#DeviceRepair</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#DeviceUse">DeviceUse</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="DeviceReplacement">
+        <h3>DeviceReplacement<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#DeviceReplacement</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#DeviceUse">DeviceUse</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="DeviceTransport">
+        <h3>DeviceTransport<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#DeviceTransport</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#DeviceEndOfLife">EndofLife</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="DeviceUse">
+        <h3>DeviceUse<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#DeviceUse</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Operational phase of the energy system</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#DeviceLifecyclePhase">DeviceLifecyclePhase</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#DeviceOperation">DeviceOperation</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#DeviceReplacement">DeviceReplacement</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#DeviceRepair">DeviceRepair</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#DeviceMaintenance">DeviceMaintenance</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="DieselGenerator">
+        <h3>DieselGenerator<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#DieselGen</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Small Diesel Generator for back up</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#Generator">Generator</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Disposal">
+        <h3>Disposal<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#Disposal</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#DeviceEndOfLife">EndofLife</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ElectricVehicle">
+        <h3>ElectricVehicle<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#EV</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Charging points and the associated EVs</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#Storage">Storage</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="DeviceEndOfLife">
+        <h3>DeviceEndOfLife<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#EndofLife</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>End of life period for the Energy System</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#LifeCycleAssesment">LifeCycleAssesment</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#DeviceTransport">DeviceTransport</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#DeviceDeconstruction">Deconstruction</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#WasteDisposal">WasteDisposal</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Disposal">Disposal</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="EnergyConsumption">
+        <h3>EnergyConsumption<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#EnergyConsumptionQuality</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#RenovationScenarioQuality">RenovationScenarioQuality</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#AnnualCoolingEnergyConsumptionPerArea">AnnualCoolingEnergyConsumptionPerArea</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AnnualHeatingEnergyConsumptionPerArea">AnnualHeatingEnergyConsumptionPerArea</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#RenewableEnergySupplyShare">RenewableEnergySupplyShare</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AnnualElectricityConsumptionPerArea">AnnualElectricityConsumptionPerArea</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#AnnualPrimaryEnergyConsumptionPerArea">AnnualPrimaryEnergyConsumptionPerArea</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="EnergyConsumptionStatistics">
+        <h3>EnergyConsumptionStatistics<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#EnergyConsumptionStatistics</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://w3id.org/digitalconstruction/0.5/Information#Statistics">https://w3id.org/digitalconstruction/0.5/Information#Statistics</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="EnergyStatistics">
+        <h3>EnergyStatistics<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#EnergyStatistics</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Generic energy and power statistics that characterize the daily curve of an energy related device</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://w3id.org/digitalconstruction/0.5/Information#InformationContentEntity">https://w3id.org/digitalconstruction/0.5/Information#InformationContentEntity</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="EngineeringCost">
+        <h3>EngineeringCost<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#Engineering</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Engineering and operation cost for the device</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#Operational">Operational</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Flexibility">
+        <h3>Flexibility<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#Flexibility</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Energy System Flexibility</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://w3id.org/digitalconstruction/0.5/Variables#Property">https://w3id.org/digitalconstruction/0.5/Variables#Property</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Generator">
+        <h3>Generator<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#Generator</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://w3id.org/digitalconstruction/0.5/Entities#Device">dice:Device</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#CombinedHeatPower">CombinedHeatPower</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#DieselGenerator">DieselGen</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Photovoltaics">Photovoltaics</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#WindTurbine">WindTurbine</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="LifeCycleAssesment">
+        <h3>LifeCycleAssesment<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#LifeCycleAssesment</code></td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#DeviceEndOfLife">EndofLife</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#DeviceConstruction">Construction</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="LifecycleCost">
+        <h3>LifecycleCost<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#LifeCycleCost</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Lifecycle Cost Parameters for the Energy Systems</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://w3id.org/digitalconstruction/0.5/Variables#QuantitativeProperty">https://w3id.org/digitalconstruction/0.5/Variables#QuantitativeProperty</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#CapitalCost">CapitalCost</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#OperationalCost">OperationalCost</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#hasLifecycleCost">hasLifecycleCost</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Load">
+        <h3>Load<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#Load</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://w3id.org/digitalconstruction/0.5/Entities#Device">dice:Device</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="MaintenanceCost">
+        <h3>MaintenanceCost<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#MaintenanceCost</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Maintenance Costs for the Energy System</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#OperationalCost">OperationalCost</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="OccupancyComfort">
+        <h3>OccupancyComfort<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#OccupancyComfortQuality</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#RenovationScenarioQuality">RenovationScenarioQuality</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#AnnualThermalDiscomfortHours">AnnualThermalDiscomfortHours</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Operational">
+        <h3>Operational<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#Operational</code></td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#EngineeringCost">Engineering</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="OperationalCost">
+        <h3>OperationalCost<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#OperationalCost</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The operational costs for the Energy System</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#LifecycleCost">LifeCycleCost</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#MaintenanceCost">MaintenanceCost</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Photovoltaics">
+        <h3>Photovoltaics<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#Photovoltaics</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#Generator">Generator</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="PowerStatistics">
+        <h3>PowerStatistics<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#PowerStatistics</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://w3id.org/digitalconstruction/0.5/Information#Statistics">https://w3id.org/digitalconstruction/0.5/Information#Statistics</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="RenewableEnergySupplyShare">
+        <h3>RenewableEnergySupplyShare<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#RenewableEnergySupplyShare</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The percentage of energy consumption that comes from renewable energy sources</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#EnergyConsumption">EnergyConsumptionQuality</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="RenovationCost">
+        <h3>RenovationCost<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#RenovationCostQuality</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#RenovationScenarioQuality">RenovationScenarioQuality</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#AnnualOperationalCostPerArea">AnnualOperationalCostPerArea</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#RenovationPaybackTime">RenovationPaybackTime</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="RenovationPaybackTime">
+        <h3>RenovationPaybackTime<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#RenovationPaybackTime</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The number of years it takes to pay back the costs of renovation, that is, the time the savings equal to the investment</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#RenovationCost">RenovationCostQuality</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="RenovationScenario">
+        <h3>RenovationScenario<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#RenovationScenario</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>A Scenario - a description and analysis of a potential future of an entity - where that entity is a Location (a building or a building zone) that is subject to a set of RenovationMeasures (activities to dismantel, modify, or replace existing structure or to install additional structures), and the characteristics of implied by the application of those Measures.</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://w3id.org/digitalconstruction/0.5/Information#Scenario">https://w3id.org/digitalconstruction/0.5/Information#Scenario</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In domain of</th>
+                <td>
+                    <a href="#hasRenovationMeasure">hasRenovationMeasure</a><sup class="sup-op" title="object property">op</sup><br/>
+                    <a href="#hasScenarioQuality">hasScenarioQuality</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="RenovationScenarioQuality">
+        <h3>RenovationScenarioQuality<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#RenovationScenarioQuality</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://w3id.org/digitalconstruction/0.5/Variables#QuantitativeProperty">https://w3id.org/digitalconstruction/0.5/Variables#QuantitativeProperty</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#RenovationCost">RenovationCostQuality</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#OccupancyComfort">OccupancyComfortQuality</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#EnergyConsumption">EnergyConsumptionQuality</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>In range of</th>
+                <td>
+                    <a href="#hasScenarioQuality">hasScenarioQuality</a><sup class="sup-op" title="object property">op</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Reward">
+        <h3>Reward<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#Reward</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The reward for participating in innovative energy services (like demand-response)</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://w3id.org/digitalconstruction/0.5/Variables#Property">https://w3id.org/digitalconstruction/0.5/Variables#Property</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="SelfConsumptionOptimization">
+        <h3>SelfConsumptionOptimization<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#SelfConsumptionOptimization</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The service of self consumption optimization to balance local generation with demand</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://w3id.org/digitalconstruction/0.5/Processes#Service">https://w3id.org/digitalconstruction/0.5/Processes#Service</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="ServiceAggregator">
+        <h3>ServiceAggregator<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#ServiceAggregator</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>The load control from 3rd party aggregators to enable participation in demand-response markets. For example, services to distribution service operators</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://w3id.org/digitalconstruction/0.5/Processes#Service">https://w3id.org/digitalconstruction/0.5/Processes#Service</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Storage">
+        <h3>Storage<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#Storage</code></td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="https://w3id.org/digitalconstruction/0.5/Entities#Device">dice:Device</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#ElectricVehicle">EV</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#BatteryStorage">BatteryStorage</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="WasteDisposal">
+        <h3>WasteDisposal<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#WasteDisposal</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Special process required for the management of disposals</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#DeviceEndOfLife">EndofLife</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="WindTurbine">
+        <h3>WindTurbine<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#WindTurbine</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    <p>Wind Turbines (small scale)</p>
+                </td>
+            </tr>
+            <tr>
+                <th>Super-classes</th>
+                <td>
+                    <a href="#Generator">Generator</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Device">
+        <h3>Device<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Entities#Device</code></td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#Generator">Generator</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Storage">Storage</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Load">Load</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Actuator">Actuator</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="InformationContentEntity">
+        <h3>InformationContentEntity<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Information#InformationContentEntity</code></td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#EnergyStatistics">EnergyStatistics</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Profile">
+        <h3>Profile<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Information#Profile</code></td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#BaselineProfile">BaselineProfile</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Scenario">
+        <h3>Scenario<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Information#Scenario</code></td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#RenovationScenario">RenovationScenario</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Statistics">
+        <h3>Statistics<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Information#Statistics</code></td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#PowerStatistics">PowerStatistics</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#EnergyConsumptionStatistics">EnergyConsumptionStatistics</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Service">
+        <h3>Service<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Processes#Service</code></td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#ComfortPreservation">ComfortManagement</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#ServiceAggregator">ServiceAggregator</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#SelfConsumptionOptimization">SelfConsumptionOptimization</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="Property">
+        <h3>Property<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Variables#Property</code></td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#Flexibility">Flexibility</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#Reward">Reward</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity class" id="QuantitativeProperty">
+        <h3>QuantitativeProperty<sup title="class" class="sup-c">c</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Variables#QuantitativeProperty</code></td>
+            </tr>
+            <tr>
+                <th>Sub-classes</th>
+                <td>
+                    <a href="#RenovationScenarioQuality">RenovationScenarioQuality</a><sup class="sup-c" title="class">c</sup><br/>
+                    <a href="#LifecycleCost">LifeCycleCost</a><sup class="sup-c" title="class">c</sup><br/>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+<section id="objectproperties">
+    <h2>Object Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#hasEnergyStatistics">hasEnergyStatistics</a></li>
+        <li><a href="#hasFlexibility">hasFlexibility</a></li>
+        <li><a href="#hasLifecycleCost">hasLifecycleCost</a></li>
+        <li><a href="#hasLifecycleParameters">hasLifecycleParameters</a></li>
+        <li><a href="#hasPowerStatistics">hasPowerStatistics</a></li>
+        <li><a href="#hasRenovationMeasure">hasRenovationMeasure</a></li>
+        <li><a href="#haReward">haReward</a></li>
+        <li><a href="#hasScenarioQuality">hasScenarioQuality</a></li>
+    </ul>
+    <div class="entity property" id="hasEnergyStatistics">
+        <h3>hasEnergyStatistics<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#hasEnergyStatistics</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    An energy system has some typical energy statistics
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasFlexibility">
+        <h3>hasFlexibility<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#hasFlexibility</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Flexibility value associated with a specific service
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasLifecycleCost">
+        <h3>hasLifecycleCost<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#hasLifecycleCost</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The relationship between LCA and LCC
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#LifecycleCost">LifeCycleCost</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasLifecycleParameters">
+        <h3>hasLifecycleParameters<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#hasLifecycleParameters</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Relationship of a device and its LCA
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasPowerStatistics">
+        <h3>hasPowerStatistics<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#hasPowerStatistics</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The eneryg system has some power statistics
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasRenovationMeasure">
+        <h3>hasRenovationMeasure<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#hasRenovationMeasure</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#RenovationScenario">RenovationScenario</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="haReward">
+        <h3>haReward<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#hasReward</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    A service of the energy system is associated with a reward for this service
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasScenarioQuality">
+        <h3>hasScenarioQuality<sup title="object property" class="sup-op">op</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#hasScenarioQuality</code></td>
+            </tr>
+            <tr>
+                <th>Domain(s)</th>
+                <td>
+                    <a href="#RenovationScenario">RenovationScenario</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="#RenovationScenarioQuality">RenovationScenarioQuality</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="datatypeproperties">
+    <h2>Datatype Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#ComfortProperty">ComfortProperty</a></li>
+        <li><a href="#CostProperty">CostProperty</a></li>
+        <li><a href="#EnergyProperty">EnergyProperty</a></li>
+        <li><a href="#annualHoursOfThermalDiscomfort">annualHoursOfThermalDiscomfort</a></li>
+        <li><a href="#hasDuration">hasDuration</a></li>
+        <li><a href="#hasEmissions">hasEmissions</a></li>
+        <li><a href="#hasEnergyMax">hasEnergyMax</a></li>
+        <li><a href="#hasEnergyMin">hasEnergyMin</a></li>
+        <li><a href="#hasEnergyUse">hasEnergyUse</a></li>
+        <li><a href="#hasPowerMax">hasPowerMax</a></li>
+        <li><a href="#hasPowerMin">hasPowerMin</a></li>
+        <li><a href="#hasPowerSTD">hasPowerSTD</a></li>
+        <li><a href="#hasPowerSkewness">hasPowerSkewness</a></li>
+        <li><a href="#normalizedCoolingEnergyConsumption">normalizedCoolingEnergyConsumption</a></li>
+        <li><a href="#normalizedElectricityConsumption">normalizedElectricityConsumption</a></li>
+        <li><a href="#normalizedHeatingEnergyConsumption">normalizedHeatingEnergyConsumption</a></li>
+        <li><a href="#normalizedInvestmentCost">normalizedInvestmentCost</a></li>
+        <li><a href="#normalizedOperationalEnergyCosts">normalizedOperationalEnergyCosts</a></li>
+        <li><a href="#normalizedPrimaryEnergyConsumption">normalizedPrimaryEnergyConsumption</a></li>
+        <li><a href="#oprComfortCriterion">oprComfortCriterion</a></li>
+        <li><a href="#ownersProjectRequirementCriterion">ownersProjectRequirementCriterion</a></li>
+    </ul>
+    <div class="entity property" id="ComfortProperty">
+        <h3>ComfortProperty<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#ComfortProperty</code></td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#ownersProjectRequirementCriterion">ownersProjectRequirementCriterion</a><sup class="sup-dp" title="datatype property">dp</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="CostProperty">
+        <h3>CostProperty<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#CostProperty</code></td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#ownersProjectRequirementCriterion">ownersProjectRequirementCriterion</a><sup class="sup-dp" title="datatype property">dp</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="EnergyProperty">
+        <h3>EnergyProperty<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#EnergyProperty</code></td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#ownersProjectRequirementCriterion">ownersProjectRequirementCriterion</a><sup class="sup-dp" title="datatype property">dp</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="annualHoursOfThermalDiscomfort">
+        <h3>annualHoursOfThermalDiscomfort<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#annualHoursOfThermalDiscomfort</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Thermal discomfort, measured as a number of hours when the temperature is above 27 degrees celsius
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#oprComfortCriterion">oprComfortCriterion</a><sup class="sup-dp" title="datatype property">dp</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasDuration">
+        <h3>hasDuration<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#hasDuration</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The total duration of the process
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasEmissions">
+        <h3>hasEmissions<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#hasEmissions</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The amount of Emissions in LCA analysis
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasEnergyMax">
+        <h3>hasEnergyMax<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#hasEnergyMax</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The max value for the energy (daily) profile of an energy system
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasEnergyMin">
+        <h3>hasEnergyMin<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#hasEnergyMin</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The min value for the energy (daily) profile of an energy system
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasEnergyUse">
+        <h3>hasEnergyUse<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#hasEnergyUse</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasPowerMax">
+        <h3>hasPowerMax<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#hasPowerMax</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The max value for the power profile of an energy system
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasPowerMin">
+        <h3>hasPowerMin<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#hasPowerMin</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    The min value for the power profile of an energy system
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasPowerSTD">
+        <h3>hasPowerSTD<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#hasPowerSTD</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Power Standard deviation of a device
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="hasPowerSkewness">
+        <h3>hasPowerSkewness<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#hasPowerSkewness</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Power Skewness of a device power profile
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#float">xsd:float</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="normalizedCoolingEnergyConsumption">
+        <h3>normalizedCoolingEnergyConsumption<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#normalizedCoolingEnergyConsumption</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Annual cooling energy consumption of a building, in kWh/m2
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#EnergyProperty">EnergyProperty</a><sup class="sup-dp" title="datatype property">dp</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#decimal">xsd:decimal</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="normalizedElectricityConsumption">
+        <h3>normalizedElectricityConsumption<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#normalizedElectricityConsumption</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Annual electricity consumption of a building, in kWh/m2
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#EnergyProperty">EnergyProperty</a><sup class="sup-dp" title="datatype property">dp</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#decimal">xsd:decimal</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="normalizedHeatingEnergyConsumption">
+        <h3>normalizedHeatingEnergyConsumption<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#normalizedHeatingEnergyConsumption</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Annual heating energy consumption of a building, in kWh/m2
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#EnergyProperty">EnergyProperty</a><sup class="sup-dp" title="datatype property">dp</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#decimal">xsd:decimal</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="normalizedInvestmentCost">
+        <h3>normalizedInvestmentCost<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#normalizedInvestmentCosts</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Investment costs of a renovation project as $/floor-m2
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#CostProperty">CostProperty</a><sup class="sup-dp" title="datatype property">dp</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#decimal">xsd:decimal</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="normalizedOperationalEnergyCosts">
+        <h3>normalizedOperationalEnergyCosts<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#normalizedOperationalEnergyCosts</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Annual operational energy cost of a building in €/floor-m2
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#CostProperty">CostProperty</a><sup class="sup-dp" title="datatype property">dp</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#decimal">xsd:decimal</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="normalizedPrimaryEnergyConsumption">
+        <h3>normalizedPrimaryEnergyConsumption<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#normalizedPrimaryEnergyConsumption</code></td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>
+                    Annual primary energy consumption of a building, in kWhpr/m2
+                </td>
+            </tr>
+            <tr>
+                <th>Super-properties</th>
+                <td>
+                    <a href="#EnergyProperty">EnergyProperty</a><sup class="sup-dp" title="datatype property">dp</sup>
+                </td>
+            </tr>
+            <tr>
+                <th>Range(s)</th>
+                <td>
+                    <a href="http://www.w3.org/2001/XMLSchema#decimal">xsd:decimal</a><sup class="sup-c" title="class">c</sup>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="oprComfortCriterion">
+        <h3>oprComfortCriterion<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#oprComfortCriterion</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="ownersProjectRequirementCriterion">
+        <h3>ownersProjectRequirementCriterion<sup title="datatype property" class="sup-dp">dp</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>https://w3id.org/digitalconstruction/0.5/Energy#ownersProjectRequirementCriterion</code></td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+<section id="annotationproperties">
+    <h2>Annotation Properties <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#creator">creator</a></li>
+        <li><a href="#abstract">abstract</a></li>
+        <li><a href="#description">description</a></li>
+        <li><a href="#license">license</a></li>
+        <li><a href="#publisher">publisher</a></li>
+        <li><a href="#title">title</a></li>
+        <li><a href="#preferredNamespacePrefix">preferredNamespacePrefix</a></li>
+        <li><a href="#preferredNamespaceUri">preferredNamespaceUri</a></li>
+    </ul>
+    <div class="entity property" id="creator">
+        <h3>creator<sup title="annotation property" class="sup-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://purl.org/dc/elements/1.1/creator</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="abstract">
+        <h3>abstract<sup title="annotation property" class="sup-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://purl.org/dc/terms/abstract</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="description">
+        <h3>description<sup title="annotation property" class="sup-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://purl.org/dc/terms/description</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="license">
+        <h3>license<sup title="annotation property" class="sup-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://purl.org/dc/terms/license</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="publisher">
+        <h3>publisher<sup title="annotation property" class="sup-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://purl.org/dc/terms/publisher</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="title">
+        <h3>title<sup title="annotation property" class="sup-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://purl.org/dc/terms/title</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="preferredNamespacePrefix">
+        <h3>preferredNamespacePrefix<sup title="annotation property" class="sup-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://purl.org/vocab/vann/preferredNamespacePrefix</code></td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity property" id="preferredNamespaceUri">
+        <h3>preferredNamespaceUri<sup title="annotation property" class="sup-ap">ap</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td><code>http://purl.org/vocab/vann/preferredNamespaceUri</code></td>
+            </tr>
+        </table>
+    </div>
+</section>
+
+  
+  <section id="namedindividuals">
+    <h2>Named Individuals <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <ul class="hlist">
+        <li><a href="#DeviceDisposal">DeviceDisposal</a></li>
+        <li><a href="#DeviceRelocation">DeviceRelocation</a></li>
+        <li><a href="#Production">Production</a></li>
+    </ul>
+    <div class="entity named_individual" id="DeviceDisposal">
+        <h3>DeviceDisposal<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      https://w3id.org/digitalconstruction/0.5/Energy#DeviceDisposal
+                  
+                  </code>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity named_individual" id="DeviceRelocation">
+        <h3>DeviceRelocation<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      https://w3id.org/digitalconstruction/0.5/Energy#DeviceRelocation
+                  
+                  </code>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="entity named_individual" id="Production">
+        <h3>Production<sup title="named individual" class="sup-ni">ni</sup></h3>
+        <table>
+            <tr>
+                <th>URI</th>
+                <td>
+                  <code>
+                      https://w3id.org/digitalconstruction/0.5/Energy#Production
+                  
+                  </code>
+                </td>
+            </tr>
+        </table>
+    </div>
+</section>
+  
+  <section id="namespaces">
+    <h2>Namespaces <span style="float:right; font-size:smaller;"><a href="">&uparrow;</a></span></h2>
+    <dl>
+        <dt>:</dt>
+        <dd><code>https://w3id.org/digitalconstruction/0.5/Energy#</code></dd>
+        <dt>dice</dt>
+        <dd><code>https://w3id.org/digitalconstruction/0.5/Entities#</code></dd>
+        <dt>owl</dt>
+        <dd><code>http://www.w3.org/2002/07/owl#</code></dd>
+        <dt>prov</dt>
+        <dd><code>http://www.w3.org/ns/prov#</code></dd>
+        <dt>rdf</dt>
+        <dd><code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code></dd>
+        <dt>rdfs</dt>
+        <dd><code>http://www.w3.org/2000/01/rdf-schema#</code></dd>
+        <dt>sdo</dt>
+        <dd><code>https://schema.org/</code></dd>
+        <dt>skos</dt>
+        <dd><code>http://www.w3.org/2004/02/skos/core#</code></dd>
+        <dt>xsd</dt>
+        <dd><code>http://www.w3.org/2001/XMLSchema#</code></dd>
+    </dl>
+</section>
+  <section id="legend">
+      <h2>Legend</h2>
+      <table class="entity">
+          <tr><td><sup class="sup-c" title="Classes">c</sup></td><td>Classes</td></tr>
+          <tr><td><sup class="sup-op" title="Object Properties">op</sup></td><td>Object Properties</td></tr>
+          <tr><td><sup class="sup-fp" title="Functional Properties">fp</sup></td><td>Functional Properties</td></tr>
+          <tr><td><sup class="sup-dp" title="Data Properties">dp</sup></td><td>Data Properties</td></tr>
+          <tr><td><sup class="sup-ap" title="Annotation Properties">dp</sup></td><td>Annotation Properties</td></tr>
+          <tr><td><sup class="sup-p" title="Properties">p</sup></td><td>Properties</td></tr>
+          <tr><td><sup class="sup-ni" title="Named Individuals">ni</sup></td><td>Named Individuals</td></tr>
+      </table>
+  </section>
+</body>
+</html>
