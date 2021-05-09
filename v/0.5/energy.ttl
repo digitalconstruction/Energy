@@ -130,8 +130,8 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 #    Data properties
 #################################################################
 
-###  https://w3id.org/digitalconstruction/0.5/Energy#CostProperty
-:CostProperty rdf:type owl:DatatypeProperty .
+# ###  https://w3id.org/digitalconstruction/0.5/Energy#CostProperty
+# :CostProperty rdf:type owl:DatatypeProperty .
 
 
 ###  https://w3id.org/digitalconstruction/0.5/Energy#EnergyProperty
@@ -302,7 +302,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                                   		      	owl:onProperty dicv:isPropertyFor ;
                                                         owl:hasValue :hasNormalizedInvestmentCosts 
                                                         ] ;
-			   rdfs:subClassyOf :CostProperty ,
+			   rdfs:subClassyOf dicp:CostProperty ,
 					    [ rdf:type owl:Restriction ;
                                        	      owl:onProperty dicv:hasQuantityKind ;
                                               owl:hasValue dicu:CurrencyPerAreaTime
@@ -326,7 +326,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                                   		      	owl:onProperty dicv:isPropertyFor ;
                                                         owl:hasValue :hasNormalizedOperationalEnergyCosts 
                                                         ] ;
-				 rdfs:subClassyOf :CostProperty ,
+				 rdfs:subClassyOf dicp:CostProperty ,
 				 		  [ rdf:type owl:Restriction ;
                                                     owl:onProperty dicv:hasQuantityKind ;
                                                     owl:hasValue dicu:CurrencyPerAreaTime
@@ -435,7 +435,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                                                     owl:onProperty dicv:isPropertyFor ;
                                                     owl:hasValue :hasAnnualOperationalCostPerArea
                                                   ] ;
-                              rdfs:subClassOf :CostProperty ,
+                              rdfs:subClassOf dicp:CostProperty ,
                                               [ rdf:type owl:Restriction ;
                                                 owl:onProperty dicv:hasQuantityKind ;
                                                 owl:hasValue dicu:CurrencyPerAreaTime
@@ -507,11 +507,6 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
               rdfs:subClassOf :DeviceLifecyclePhase ;
               rdfs:comment "Construction phase of renovation" ;
               rdfs:label "DeviceConstruction" .
-
-
-###  https://w3id.org/digitalconstruction/0.5/Energy#CostProperty
-:CostProperty rdf:type owl:Class ;
-              rdfs:subClassOf dicv:QuantitativeProperty .
 
 
 ###  https://w3id.org/digitalconstruction/0.5/Energy#Deconstruction
@@ -727,14 +722,14 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 
 ###  https://w3id.org/digitalconstruction/0.5/Energy#InvestmentPaybackTime
 :InvestmentPaybackTime rdf:type owl:Class ;
-                       rdfs:subClassOf :CostProperty ;
+                       rdfs:subClassOf dicp:CostProperty ;
                        rdfs:comment "The number of years it takes to pay back the costs of renovation, that is, the time the savings equal to the investment" ;
                        rdfs:label "InvestmentPaybackTime" .
 
 
 ###  https://w3id.org/digitalconstruction/0.5/Energy#LifeCycleCost
 :LifeCycleCost rdf:type owl:Class ;
-               rdfs:subClassOf :CostProperty ;
+               rdfs:subClassOf dicp:CostProperty ;
                rdfs:comment "Lifecycle Cost Parameters for the Energy Systems" ;
                rdfs:label "LifecycleCost" .
 
@@ -950,8 +945,6 @@ dicu:TimeRatio rdf:type owl:NamedIndividual .
 #################################################################
 #    Annotations
 #################################################################
-
-:CostProperty rdfs:label "CostProperty" .
 
 
 :EnergyProperty rdfs:label "EnergyProperty" .
