@@ -77,6 +77,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 
 ###  https://w3id.org/digitalconstruction/0.5/Energy#hasEnergyMeter
 :hasEnergyMeter rdf:type owl:ObjectProperty ;
+                owl:inverseOf :isEnergyMeterOf ;
                 rdfs:domain :DeliveredEnergyMeteringData ;
                 rdfs:range :EnergyMeter ;
                 rdfs:label "hasEnergyMeter" .
@@ -145,6 +146,13 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 :hasScenarioQuality rdf:type owl:ObjectProperty ;
                     rdfs:domain :RenovationScenario ;
                     rdfs:label "hasScenarioQuality" .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Energy#isEnergyMeterOf
+:isEnergyMeterOf rdf:type owl:ObjectProperty ;
+                 rdfs:domain :EnergyMeter ;
+                 rdfs:range :DeliveredEnergyMeteringData ;
+                 rdfs:label "isEnergyMeterOf" .
 
 
 #################################################################
@@ -223,6 +231,11 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 ###  https://w3id.org/digitalconstruction/0.5/Energy#hasEnergyUse
 :hasEnergyUse rdf:type owl:DatatypeProperty ;
               rdfs:label "hasEnergyUse" .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Energy#hasInvestmentUnitCost
+:hasInvestmentUnitCost rdf:type owl:DatatypeProperty ;
+                       rdfs:range xsd:decimal .
 
 
 ###  https://w3id.org/digitalconstruction/0.5/Energy#hasNormalizedCoolingEnergyConsumption
@@ -621,7 +634,8 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 
 ###  https://w3id.org/digitalconstruction/0.5/Energy#EnergyMeter
 :EnergyMeter rdf:type owl:Class ;
-             rdfs:subClassOf :EnergyData .
+             rdfs:subClassOf dici:PropertyHistory ;
+             rdfs:label "EnergyMeter" .
 
 
 ###  https://w3id.org/digitalconstruction/0.5/Energy#EnergyProperty
@@ -661,6 +675,17 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                        rdfs:label "InvestmentPaybackTime" .
 
 
+###  https://w3id.org/digitalconstruction/0.5/Energy#InvestmentUnitCost
+:InvestmentUnitCost rdf:type owl:Class ;
+                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                          owl:onProperty dicv:isPropertyFor ;
+                                          owl:hasValue :hasInvestmentUnitCost
+                                        ] ;
+                    rdfs:subClassOf dicp:CostProperty ;
+                    rdfs:comment "Unit cost of investment" ;
+                    rdfs:label "InvestmentUnitCost" .
+
+
 ###  https://w3id.org/digitalconstruction/0.5/Energy#LifeCycleCost
 :LifeCycleCost rdf:type owl:Class ;
                rdfs:subClassOf dicp:CostProperty ;
@@ -679,24 +704,6 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                  rdfs:subClassOf :OperationalCost ;
                  rdfs:comment "Maintenance Costs for the Energy System" ;
                  rdfs:label "MaintenanceCost" .
-
-
-
-
-###  https://w3id.org/digitalconstruction/0.5/Energy#hasAnnualCoolingEnergyConsumptionPerArea
-:hasInvestmentUnitCost rdf:type owl:DatatypeProperty ;
-		       rdfs:range xsd:decimal ;
-		       rdfs:label "hasInvestmentUnitCost" .
-					  
-###  https://w3id.org/digitalconstruction/0.5/Energy#NormalizedCoolingEnergyConsumption
-:InvestmentUnitCost rdf:type owl:Class ;
-                                    owl:equivalentClass [ rdf:type owl:Restriction ;
-                                                          owl:onProperty dicv:isPropertyFor ;
-                                                          owl:hasValue :hasInvestmentUnitCost 
-                                                        ] ;
-                                    rdfs:subClassOf :CostQuality ;
-                                    rdfs:comment "Unit cost of investment" ;
-                                    rdfs:label "InvestmentUnitCost" .
 
 
 ###  https://w3id.org/digitalconstruction/0.5/Energy#NormalizedCoolingEnergyConsumption
@@ -738,6 +745,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                                                  owl:onProperty dicv:isPropertyFor ;
                                                  owl:hasValue :hasNormalizedInvestmentCosts
                                                ] ;
+                           rdfs:subClassOf dicp:CostProperty ;
                            rdfs:comment "Investment costs of a renovation project as $/floor-m2" ;
                            rdfs:label "NormalizedInvestmentCost" .
 
@@ -748,6 +756,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                                                         owl:onProperty dicv:isPropertyFor ;
                                                         owl:hasValue :hasNormalizedOperationalEnergyCosts
                                                       ] ;
+                                  rdfs:subClassOf dicp:CostProperty ;
                                   rdfs:comment "Annual operational energy cost of a building in €/floor-m2" ;
                                   rdfs:label "NormalizedOperationalEnergyCosts" .
 
@@ -938,6 +947,10 @@ dicv:QuantitativeProperty rdf:type owl:Class .
 :hasAnnualPrimaryEnergyConsumptionPerArea rdf:type owl:NamedIndividual .
 
 
+###  https://w3id.org/digitalconstruction/0.5/Energy#hasInvestmentUnitCost
+:hasInvestmentUnitCost rdf:type owl:NamedIndividual .
+
+
 ###  https://w3id.org/digitalconstruction/0.5/Energy#hasNormalizedCoolingEnergyConsumption
 :hasNormalizedCoolingEnergyConsumption rdf:type owl:NamedIndividual .
 
@@ -1013,8 +1026,11 @@ dicu:TimeRatio rdf:type owl:NamedIndividual .
                                           rdfs:label "hasAnnualPrimaryEnergyConsumptionPerArea" .
 
 
-:hasNormalizedCoolingEnergyConsumption rdfs:comment "Annual cooling energy consumption of a building, in kWh/m2" ;
-                                       rdfs:label "hasNormalizedCoolingEnergyConsumption" .
+:hasInvestmentUnitCost rdfs:label "hasInvestmentUnitCost" .
+
+
+:hasNormalizedCoolingEnergyConsumption rdfs:label "hasNormalizedCoolingEnergyConsumption" ;
+                                       rdfs:comment "Annual cooling energy consumption of a building, in kWh/m2" .
 
 
 :hasNormalizedElectricityConsumption rdfs:comment "Annual electricity consumption of a building, in kWh/m2" ;
