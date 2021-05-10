@@ -681,6 +681,24 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                  rdfs:label "MaintenanceCost" .
 
 
+
+
+###  https://w3id.org/digitalconstruction/0.5/Energy#hasAnnualCoolingEnergyConsumptionPerArea
+:hasInvestmentUnitCost rdf:type owl:DatatypeProperty ;
+		       rdfs:range xsd:decimal ;
+		       rdfs:label "hasInvestmentUnitCost" .
+					  
+###  https://w3id.org/digitalconstruction/0.5/Energy#NormalizedCoolingEnergyConsumption
+:InvestmentUnitCost rdf:type owl:Class ;
+                                    owl:equivalentClass [ rdf:type owl:Restriction ;
+                                                          owl:onProperty dicv:isPropertyFor ;
+                                                          owl:hasValue :hasInvestmentUnitCost 
+                                                        ] ;
+                                    rdfs:subClassOf :CostQuality ;
+                                    rdfs:comment "Unit cost of investment" ;
+                                    rdfs:label "InvestmentUnitCost" .
+
+
 ###  https://w3id.org/digitalconstruction/0.5/Energy#NormalizedCoolingEnergyConsumption
 :NormalizedCoolingEnergyConsumption rdf:type owl:Class ;
                                     owl:equivalentClass [ rdf:type owl:Restriction ;
