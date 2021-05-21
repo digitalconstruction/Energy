@@ -20,14 +20,15 @@
                                                    owl:imports <https://w3id.org/digitalconstruction/0.5/Information/information.ttl> ;
                                                    dc:creator "Kostas Tsatsakis" ,
                                                               "Spiros Kousouris" ;
-                                                   terms:abstract "An ontology for energy services, defined as an extension of SAREF to address lifecycle assessment parameters for the energy systems." ;
-                                                   terms:description "An ontology for energy services, defined as an extension of SAREF to address lifecycle assessment (LCA) parameters for the energy systems, especially needed in renovation projects." ;
+						   dc:contributor "Seppo Törmä" ;	
+                                                   terms:abstract "An ontology for energy systems and energy efficiency in the construction and renovation domain" ;
+                                                   terms:description "An ontology for energy systems and energy efficiency in the construction and renovation domain" ;
                                                    terms:license <https://creativecommons.org/licenses/by/4.0/> ;
                                                    terms:publisher "SUITE5" ;
                                                    terms:title "Digital Construction Energy" ;
                                                    vann:preferredNamespacePrefix "dices:" ;
                                                    vann:preferredNamespaceUri "https://w3id.org/digitalconstruction/0.5/Energy" ;
-                                                   rdfs:label "Digital Construction Energy Systems" ;
+                                                   rdfs:label "Digital Construction Energy" ;
                                                    rdfs:seeAlso <https://w3id.org/digitalconstruction/0.5> .
 
 #################################################################
