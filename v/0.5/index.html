@@ -355,7 +355,7 @@
 Construction Energy ontology, related to energy systems and life cycle assessment.
    </p>
    <p>
-    <img src="energy-lca.svg" width="80%"/>
+    <img src="energy-lca.svg" width="100%"/>
    </p>
    <h3>
     Energy meters for energy simulation
@@ -533,8 +533,8 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
      </a>
     </li>
     <li>
-     <a href="#DeviceTransportation">
-      DeviceTransportation
+     <a href="#DeviceTransport">
+      DeviceTransport
      </a>
     </li>
     <li>
@@ -999,19 +999,6 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        Restrictions
       </th>
       <td>
-       <a href="https://w3id.org/digitalconstruction/0.5/Variables#hasUnit">
-        dicv:hasUnit
-       </a>
-       <span class="cardinality">
-        value
-       </span>
-       <a href="https://w3id.org/digitalconstruction/0.5/Units#KiloW-HR-PER-M2-YR">
-        dicu:KiloW-HR-PER-M2-YR
-       </a>
-       <sup class="sup-c" title="class">
-        c
-       </sup>
-       <br/>
        <a href="https://w3id.org/digitalconstruction/0.5/Variables#hasQuantityKind">
         dicv:hasQuantityKind
        </a>
@@ -1020,6 +1007,19 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        </span>
        <a href="https://w3id.org/digitalconstruction/0.5/Units#EnergyPerAreaTime">
         dicu:EnergyPerAreaTime
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br/>
+       <a href="https://w3id.org/digitalconstruction/0.5/Variables#hasUnit">
+        dicv:hasUnit
+       </a>
+       <span class="cardinality">
+        value
+       </span>
+       <a href="https://w3id.org/digitalconstruction/0.5/Units#KiloW-HR-PER-M2-YR">
+        dicu:KiloW-HR-PER-M2-YR
        </a>
        <sup class="sup-c" title="class">
         c
@@ -1076,19 +1076,6 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        Restrictions
       </th>
       <td>
-       <a href="https://w3id.org/digitalconstruction/0.5/Variables#hasQuantityKind">
-        dicv:hasQuantityKind
-       </a>
-       <span class="cardinality">
-        value
-       </span>
-       <a href="https://w3id.org/digitalconstruction/0.5/Units#EnergyPerAreaTime">
-        dicu:EnergyPerAreaTime
-       </a>
-       <sup class="sup-c" title="class">
-        c
-       </sup>
-       <br/>
        <a href="https://w3id.org/digitalconstruction/0.5/Variables#hasUnit">
         dicv:hasUnit
        </a>
@@ -1097,6 +1084,19 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        </span>
        <a href="https://w3id.org/digitalconstruction/0.5/Units#KiloW-HR-PER-M2-YR">
         dicu:KiloW-HR-PER-M2-YR
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br/>
+       <a href="https://w3id.org/digitalconstruction/0.5/Variables#hasQuantityKind">
+        dicv:hasQuantityKind
+       </a>
+       <span class="cardinality">
+        value
+       </span>
+       <a href="https://w3id.org/digitalconstruction/0.5/Units#EnergyPerAreaTime">
+        dicu:EnergyPerAreaTime
        </a>
        <sup class="sup-c" title="class">
         c
@@ -1584,15 +1584,15 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        Sub-classes
       </th>
       <td>
-       <a href="#DeviceTransportation">
-        DeviceTransport
+       <a href="#DeviceInstallation">
+        DeviceInstallation
        </a>
        <sup class="sup-c" title="class">
         c
        </sup>
        <br/>
-       <a href="#DeviceInstallation">
-        DeviceInstallation
+       <a href="#DeviceTransport">
+        DeviceTransport
        </a>
        <sup class="sup-c" title="class">
         c
@@ -1639,15 +1639,15 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        Sub-classes
       </th>
       <td>
-       <a href="#InterestRate">
-        InterestRate
+       <a href="#TaxRate">
+        TaxRate
        </a>
        <sup class="sup-c" title="class">
         c
        </sup>
        <br/>
-       <a href="#TaxRate">
-        TaxRate
+       <a href="#InterestRate">
+        InterestRate
        </a>
        <sup class="sup-c" title="class">
         c
@@ -1738,15 +1738,15 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        In domain of
       </th>
       <td>
-       <a href="#hasGeographicArea">
-        hasGeographicArea
+       <a href="#hasEnergyMeter">
+        hasEnergyMeter
        </a>
        <sup class="sup-op" title="object property">
         op
        </sup>
        <br/>
-       <a href="#hasEnergyMeter">
-        hasEnergyMeter
+       <a href="#hasGeographicArea">
+        hasGeographicArea
        </a>
        <sup class="sup-op" title="object property">
         op
@@ -1912,6 +1912,13 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        Sub-classes
       </th>
       <td>
+       <a href="#DeviceEndOfLife">
+        EndofLife
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br/>
        <a href="#DeviceConstruction">
         Construction
        </a>
@@ -1921,13 +1928,6 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        <br/>
        <a href="#DeviceUse">
         DeviceUse
-       </a>
-       <sup class="sup-c" title="class">
-        c
-       </sup>
-       <br/>
-       <a href="#DeviceEndOfLife">
-        EndofLife
        </a>
        <sup class="sup-c" title="class">
         c
@@ -2328,13 +2328,6 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        Sub-classes
       </th>
       <td>
-       <a href="#ServiceAggregation">
-        ServiceAggregation
-       </a>
-       <sup class="sup-c" title="class">
-        c
-       </sup>
-       <br/>
        <a href="#ComfortManagement">
         ComfortManagement
        </a>
@@ -2344,6 +2337,13 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        <br/>
        <a href="#SelfConsumptionOptimization">
         SelfConsumptionOptimization
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br/>
+       <a href="#ServiceAggregation">
+        ServiceAggregation
        </a>
        <sup class="sup-c" title="class">
         c
@@ -2367,9 +2367,9 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
      </tr>
     </table>
    </div>
-   <div class="entity class" id="DeviceTransportation">
+   <div class="entity class" id="DeviceTransport">
     <h3>
-     DeviceTransportation
+     DeviceTransport
      <sup class="sup-c" title="class">
       c
      </sup>
@@ -2458,15 +2458,15 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        Sub-classes
       </th>
       <td>
-       <a href="#DeviceMaintenance">
-        DeviceMaintenance
+       <a href="#DeviceOperation">
+        DeviceOperation
        </a>
        <sup class="sup-c" title="class">
         c
        </sup>
        <br/>
-       <a href="#DeviceReplacement">
-        DeviceReplacement
+       <a href="#DeviceMaintenance">
+        DeviceMaintenance
        </a>
        <sup class="sup-c" title="class">
         c
@@ -2479,8 +2479,8 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
         c
        </sup>
        <br/>
-       <a href="#DeviceOperation">
-        DeviceOperation
+       <a href="#DeviceReplacement">
+        DeviceReplacement
        </a>
        <sup class="sup-c" title="class">
         c
@@ -2761,15 +2761,15 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        Sub-classes
       </th>
       <td>
-       <a href="#DeviceDisposal">
-        DeviceDisposal
+       <a href="#DeviceDeconstruction">
+        Deconstruction
        </a>
        <sup class="sup-c" title="class">
         c
        </sup>
        <br/>
-       <a href="#DeviceDeconstruction">
-        Deconstruction
+       <a href="#DeviceDisposal">
+        DeviceDisposal
        </a>
        <sup class="sup-c" title="class">
         c
@@ -2864,19 +2864,6 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        Restrictions
       </th>
       <td>
-       <a href="https://w3id.org/digitalconstruction/0.5/Variables#hasUnit">
-        dicv:hasUnit
-       </a>
-       <span class="cardinality">
-        value
-       </span>
-       <a href="https://w3id.org/digitalconstruction/0.5/Units#KiloW-HR-PER-M2-YR">
-        dicu:KiloW-HR-PER-M2-YR
-       </a>
-       <sup class="sup-c" title="class">
-        c
-       </sup>
-       <br/>
        <a href="https://w3id.org/digitalconstruction/0.5/Variables#hasQuantityKind">
         dicv:hasQuantityKind
        </a>
@@ -2890,6 +2877,19 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
         c
        </sup>
        <br/>
+       <a href="https://w3id.org/digitalconstruction/0.5/Variables#hasUnit">
+        dicv:hasUnit
+       </a>
+       <span class="cardinality">
+        value
+       </span>
+       <a href="https://w3id.org/digitalconstruction/0.5/Units#KiloW-HR-PER-M2-YR">
+        dicu:KiloW-HR-PER-M2-YR
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br/>
       </td>
      </tr>
      <tr>
@@ -2897,29 +2897,8 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        Sub-classes
       </th>
       <td>
-       <a href="#AnnualPrimaryEnergyConsumptionPerArea">
-        AnnualPrimaryEnergyConsumptionPerArea
-       </a>
-       <sup class="sup-c" title="class">
-        c
-       </sup>
-       <br/>
        <a href="#NormalizedPrimaryEnergyConsumption">
         NormalizedPrimaryEnergyConsumption
-       </a>
-       <sup class="sup-c" title="class">
-        c
-       </sup>
-       <br/>
-       <a href="#EnergyFee">
-        EnergyFee
-       </a>
-       <sup class="sup-c" title="class">
-        c
-       </sup>
-       <br/>
-       <a href="#AnnualCoolingEnergyConsumptionPerArea">
-        AnnualCoolingEnergyConsumptionPerArea
        </a>
        <sup class="sup-c" title="class">
         c
@@ -2932,8 +2911,8 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
         c
        </sup>
        <br/>
-       <a href="#PrimaryEnergyFactor">
-        PrimaryEnergyFactor
+       <a href="#AnnualHeatingEnergyConsumptionPerArea">
+        AnnualHeatingEnergyConsumptionPerArea
        </a>
        <sup class="sup-c" title="class">
         c
@@ -2946,15 +2925,29 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
         c
        </sup>
        <br/>
-       <a href="#BasicFee">
-        BasicFee
+       <a href="#NormalizedElectricityConsumption">
+        NormalizedElectricityConsumption
        </a>
        <sup class="sup-c" title="class">
         c
        </sup>
        <br/>
-       <a href="#AnnualHeatingEnergyConsumptionPerArea">
-        AnnualHeatingEnergyConsumptionPerArea
+       <a href="#AnnualCoolingEnergyConsumptionPerArea">
+        AnnualCoolingEnergyConsumptionPerArea
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br/>
+       <a href="#EnergyFee">
+        EnergyFee
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br/>
+       <a href="#AnnualPrimaryEnergyConsumptionPerArea">
+        AnnualPrimaryEnergyConsumptionPerArea
        </a>
        <sup class="sup-c" title="class">
         c
@@ -2967,8 +2960,15 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
         c
        </sup>
        <br/>
-       <a href="#NormalizedElectricityConsumption">
-        NormalizedElectricityConsumption
+       <a href="#BasicFee">
+        BasicFee
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br/>
+       <a href="#PrimaryEnergyFactor">
+        PrimaryEnergyFactor
        </a>
        <sup class="sup-c" title="class">
         c
@@ -3073,15 +3073,15 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        In range of
       </th>
       <td>
-       <a href="#hasPowerStatistics">
-        hasPowerStatistics
+       <a href="#hasEnergyStatistics">
+        hasEnergyStatistics
        </a>
        <sup class="sup-op" title="object property">
         op
        </sup>
        <br/>
-       <a href="#hasEnergyStatistics">
-        hasEnergyStatistics
+       <a href="#hasPowerStatistics">
+        hasPowerStatistics
        </a>
        <sup class="sup-op" title="object property">
         op
@@ -3128,19 +3128,6 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        Restrictions
       </th>
       <td>
-       <a href="https://w3id.org/digitalconstruction/0.5/Variables#hasQuantityKind">
-        dicv:hasQuantityKind
-       </a>
-       <span class="cardinality">
-        value
-       </span>
-       <a href="https://w3id.org/digitalconstruction/0.5/Units#CurrencyPerEnergy">
-        dicu:CurrencyPerEnergy
-       </a>
-       <sup class="sup-c" title="class">
-        c
-       </sup>
-       <br/>
        <a href="https://w3id.org/digitalconstruction/0.5/Variables#hasUnit">
         dicv:hasUnit
        </a>
@@ -3149,6 +3136,19 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        </span>
        <a href="https://w3id.org/digitalconstruction/0.5/Units#:Euro-Per-KiloW-HR">
         dicu::Euro-Per-KiloW-HR
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br/>
+       <a href="https://w3id.org/digitalconstruction/0.5/Variables#hasQuantityKind">
+        dicv:hasQuantityKind
+       </a>
+       <span class="cardinality">
+        value
+       </span>
+       <a href="https://w3id.org/digitalconstruction/0.5/Units#CurrencyPerEnergy">
+        dicu:CurrencyPerEnergy
        </a>
        <sup class="sup-c" title="class">
         c
@@ -3209,15 +3209,15 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
         c
        </sup>
        <br/>
-       <a href="#RenewableFuelMeter">
-        RenewableFuelMeter
+       <a href="#DistrictCoolMeter">
+        DistrictCoolMeter
        </a>
        <sup class="sup-c" title="class">
         c
        </sup>
        <br/>
-       <a href="#DistrictCoolMeter">
-        DistrictCoolMeter
+       <a href="#RenewableFuelMeter">
+        RenewableFuelMeter
        </a>
        <sup class="sup-c" title="class">
         c
@@ -3320,15 +3320,15 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        Sub-classes
       </th>
       <td>
-       <a href="#EnergyConsumptionQuality">
-        EnergyConsumptionQuality
+       <a href="#RenewableEnergySupplyShare">
+        RenewableEnergySupplyShare
        </a>
        <sup class="sup-c" title="class">
         c
        </sup>
        <br/>
-       <a href="#RenewableEnergySupplyShare">
-        RenewableEnergySupplyShare
+       <a href="#EnergyConsumptionQuality">
+        EnergyConsumptionQuality
        </a>
        <sup class="sup-c" title="class">
         c
@@ -3541,8 +3541,15 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        Sub-classes
       </th>
       <td>
-       <a href="#Photovoltaics">
-        Photovoltaics
+       <a href="#WindTurbine">
+        WindTurbine
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br/>
+       <a href="#DieselGenerator">
+        DieselGen
        </a>
        <sup class="sup-c" title="class">
         c
@@ -3555,15 +3562,8 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
         c
        </sup>
        <br/>
-       <a href="#WindTurbine">
-        WindTurbine
-       </a>
-       <sup class="sup-c" title="class">
-        c
-       </sup>
-       <br/>
-       <a href="#DieselGenerator">
-        DieselGen
+       <a href="#Photovoltaics">
+        Photovoltaics
        </a>
        <sup class="sup-c" title="class">
         c
@@ -3610,15 +3610,15 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        Sub-classes
       </th>
       <td>
-       <a href="#Storage">
-        Storage
+       <a href="#Generator">
+        Generator
        </a>
        <sup class="sup-c" title="class">
         c
        </sup>
        <br/>
-       <a href="#Generator">
-        Generator
+       <a href="#Storage">
+        Storage
        </a>
        <sup class="sup-c" title="class">
         c
@@ -3845,8 +3845,8 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        Sub-classes
       </th>
       <td>
-       <a href="#CapitalCost">
-        CapitalCost
+       <a href="#EndOfLifeCost">
+        EndOfLifeCost
        </a>
        <sup class="sup-c" title="class">
         c
@@ -3859,15 +3859,15 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
         c
        </sup>
        <br/>
-       <a href="#OperationalCost">
-        OperationalCost
+       <a href="#CapitalCost">
+        CapitalCost
        </a>
        <sup class="sup-c" title="class">
         c
        </sup>
        <br/>
-       <a href="#EndOfLifeCost">
-        EndOfLifeCost
+       <a href="#OperationalCost">
+        OperationalCost
        </a>
        <sup class="sup-c" title="class">
         c
@@ -4396,19 +4396,6 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        Restrictions
       </th>
       <td>
-       <a href="https://w3id.org/digitalconstruction/0.5/Variables#hasUnit">
-        dicv:hasUnit
-       </a>
-       <span class="cardinality">
-        value
-       </span>
-       <a href="http://qudt.org/2.1/vocab/unit/UNITLESS">
-        unit:UNITLESS
-       </a>
-       <sup class="sup-c" title="class">
-        c
-       </sup>
-       <br/>
        <a href="https://w3id.org/digitalconstruction/0.5/Variables#hasQuantityKind">
         dicv:hasQuantityKind
        </a>
@@ -4417,6 +4404,19 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        </span>
        <a href="http://qudt.org/2.1/vocab/quantitykind/Dimensionless">
         quantitykind:Dimensionless
+       </a>
+       <sup class="sup-c" title="class">
+        c
+       </sup>
+       <br/>
+       <a href="https://w3id.org/digitalconstruction/0.5/Variables#hasUnit">
+        dicv:hasUnit
+       </a>
+       <span class="cardinality">
+        value
+       </span>
+       <a href="http://qudt.org/2.1/vocab/unit/UNITLESS">
+        unit:UNITLESS
        </a>
        <sup class="sup-c" title="class">
         c
@@ -4551,15 +4551,15 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        In domain of
       </th>
       <td>
-       <a href="#hasRenovationMeasure">
-        hasRenovationMeasure
+       <a href="#hasScenarioQuality">
+        hasScenarioQuality
        </a>
        <sup class="sup-op" title="object property">
         op
        </sup>
        <br/>
-       <a href="#hasScenarioQuality">
-        hasScenarioQuality
+       <a href="#hasRenovationMeasure">
+        hasRenovationMeasure
        </a>
        <sup class="sup-op" title="object property">
         op
@@ -4694,8 +4694,8 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        Sub-classes
       </th>
       <td>
-       <a href="#WaterHeater">
-        WaterHeater
+       <a href="#ElectricVehicle">
+        EV
        </a>
        <sup class="sup-c" title="class">
         c
@@ -4708,8 +4708,8 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
         c
        </sup>
        <br/>
-       <a href="#ElectricVehicle">
-        EV
+       <a href="#WaterHeater">
+        WaterHeater
        </a>
        <sup class="sup-c" title="class">
         c
@@ -4854,8 +4854,8 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        Sub-classes
       </th>
       <td>
-       <a href="#Actuator">
-        Actuator
+       <a href="#Load">
+        Load
        </a>
        <sup class="sup-c" title="class">
         c
@@ -4868,8 +4868,8 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
         c
        </sup>
        <br/>
-       <a href="#Load">
-        Load
+       <a href="#Actuator">
+        Actuator
        </a>
        <sup class="sup-c" title="class">
         c
@@ -4916,15 +4916,15 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        Sub-classes
       </th>
       <td>
-       <a href="#EnergyConsumptionStatistics">
-        EnergyConsumptionStatistics
+       <a href="#PowerStatistics">
+        PowerStatistics
        </a>
        <sup class="sup-c" title="class">
         c
        </sup>
        <br/>
-       <a href="#PowerStatistics">
-        PowerStatistics
+       <a href="#EnergyConsumptionStatistics">
+        EnergyConsumptionStatistics
        </a>
        <sup class="sup-c" title="class">
         c
@@ -4957,15 +4957,15 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        Sub-classes
       </th>
       <td>
-       <a href="#Flexibility">
-        Flexibility
+       <a href="#FlexibilityReward">
+        FlexibilityReward
        </a>
        <sup class="sup-c" title="class">
         c
        </sup>
        <br/>
-       <a href="#FlexibilityReward">
-        FlexibilityReward
+       <a href="#Flexibility">
+        Flexibility
        </a>
        <sup class="sup-c" title="class">
         c
@@ -4998,15 +4998,15 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
        Sub-classes
       </th>
       <td>
-       <a href="#EnergyProperty">
-        EnergyProperty
+       <a href="#DevicePerformance">
+        DevicePerformance
        </a>
        <sup class="sup-c" title="class">
         c
        </sup>
        <br/>
-       <a href="#DevicePerformance">
-        DevicePerformance
+       <a href="#EnergyProperty">
+        EnergyProperty
        </a>
        <sup class="sup-c" title="class">
         c
@@ -7371,12 +7371,12 @@ Construction Energy ontology, related to energy systems and life cycle assessmen
       Classes(s)
      </dt>
      <dd>
-      <a href="http://www.w3.org/2002/07/owl#Class">
-       owl:Class
-      </a>
-      <br/>
       <a href="http://www.w3.org/2000/01/rdf-schema#Class">
        rdfs:Class
+      </a>
+      <br/>
+      <a href="http://www.w3.org/2002/07/owl#Class">
+       owl:Class
       </a>
       <br/>
      </dd>
