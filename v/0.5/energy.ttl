@@ -104,9 +104,23 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                    rdfs:label "hasGeographicArea" .
 
 
+###  https://w3id.org/digitalconstruction/0.5/Energy#hasLifeCycleImpact
+:hasLifeCycleImpact rdf:type owl:ObjectProperty ;
+                    rdfs:domain :LifeCycleAssessment ;
+                    rdfs:range :LifeCycleImpact ;
+                    rdfs:label "hasLifeCycleImpact" .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Energy#hasLifeCycleInventory
+:hasLifeCycleInventory rdf:type owl:ObjectProperty ;
+                       rdfs:domain :LifeCycleAssessment ;
+                       rdfs:range :LifeCycleInventory ;
+                       rdfs:label "hasLifeCycleInventory" .
+
+
 ###  https://w3id.org/digitalconstruction/0.5/Energy#hasLifeCyclePhase
 :hasLifeCyclePhase rdf:type owl:ObjectProperty ;
-                   rdfs:domain :LifeCycleAssessment ;
+                   rdfs:domain :LifeCycleInventory ;
                    rdfs:range :DeviceLifecyclePhase ;
                    rdfs:label "hasLifeCyclePhase" .
 
@@ -334,6 +348,12 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                rdfs:subClassOf :Actuator ;
                rdfs:comment "Independent from the ActuatorSwitch class, the ActuatorLevel class enables a user or application to model LEVEL commands (start, up, percentageAbsolute, relative, etc.). This can be used to dim a light, set the speed of an electric motor, etc." ;
                rdfs:label "ActuatorLevel" .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Energy#AgriculturalLandOccupationPotential
+:AgriculturalLandOccupationPotential rdf:type owl:Class ;
+                                     rdfs:subClassOf :EcosystemImpact ;
+                                     rdfs:label "AgriculturalLandOccupationPotential" .
 
 
 ###  https://w3id.org/digitalconstruction/0.5/Energy#AnnualCoolingEnergyConsumptionPerArea
@@ -627,6 +647,24 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
     rdfs:label "ElectricVehicle" .
 
 
+###  https://w3id.org/digitalconstruction/0.5/Energy#EcosystemAffectingPhotochemicalOxidantFormationPotential
+:EcosystemAffectingPhotochemicalOxidantFormationPotential rdf:type owl:Class ;
+                                                          rdfs:subClassOf :EcosystemImpact ;
+                                                          rdfs:label "EcosystemAffectingPhotochemicalOxidantFormationPotential" .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Energy#EcosystemImpact
+:EcosystemImpact rdf:type owl:Class ;
+                 rdfs:subClassOf :LifeCycleImpact ;
+                 rdfs:label "EcosystemImpact" .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Energy#EcotoxicityPotential
+:EcotoxicityPotential rdf:type owl:Class ;
+                      rdfs:subClassOf :EcosystemImpact ;
+                      rdfs:label "EcotoxicityPotential" .
+
+
 ###  https://w3id.org/digitalconstruction/0.5/Energy#ElectricalEnergyMeter
 :ElectricalEnergyMeter rdf:type owl:Class ;
                        rdfs:subClassOf :EnergyMeter ;
@@ -744,15 +782,51 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                  rdfs:label "FossilFuelMeter" .
 
 
+###  https://w3id.org/digitalconstruction/0.5/Energy#FossilFuelPotential
+:FossilFuelPotential rdf:type owl:Class ;
+                     rdfs:subClassOf :ResourceUseImpact ;
+                     rdfs:label "FossilFuelPotential" .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Energy#FreshwaterEutrophicationPotential
+:FreshwaterEutrophicationPotential rdf:type owl:Class ;
+                                   rdfs:subClassOf :EcosystemImpact ;
+                                   rdfs:label "FreshwaterEutrophicationPotential" .
+
+
 ###  https://w3id.org/digitalconstruction/0.5/Energy#Generator
 :Generator rdf:type owl:Class ;
            rdfs:subClassOf :HVACDevice .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Energy#GlobalWarmingPotential
+:GlobalWarmingPotential rdf:type owl:Class ;
+                        rdfs:subClassOf :HumanHealthImpact ;
+                        rdfs:label "GlobalWarmingPotential" .
 
 
 ###  https://w3id.org/digitalconstruction/0.5/Energy#HVACDevice
 :HVACDevice rdf:type owl:Class ;
             rdfs:subClassOf dice:Device ;
             rdfs:label "HVACDevice" .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Energy#HumanAffectingPhotochemicalOxidantFormationPotential
+:HumanAffectingPhotochemicalOxidantFormationPotential rdf:type owl:Class ;
+                                                      rdfs:subClassOf :HumanHealthImpact ;
+                                                      rdfs:label "HumanAffectingPhotochemicalOxidantFormationPotential" .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Energy#HumanHealthImpact
+:HumanHealthImpact rdf:type owl:Class ;
+                   rdfs:subClassOf :LifeCycleImpact ;
+                   rdfs:label "HumanHealthImpact" .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Energy#HumanToxicityPotential
+:HumanToxicityPotential rdf:type owl:Class ;
+                        rdfs:subClassOf :HumanHealthImpact ;
+                        rdfs:label "HumanToxicityPotential" .
 
 
 ###  https://w3id.org/digitalconstruction/0.5/Energy#InterestRate
@@ -783,6 +857,12 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                     rdfs:label "InvestmentUnitCost" .
 
 
+###  https://w3id.org/digitalconstruction/0.5/Energy#IonisingRadiationPotential
+:IonisingRadiationPotential rdf:type owl:Class ;
+                            rdfs:subClassOf :HumanHealthImpact ;
+                            rdfs:label "IonisingRadiationPotential" .
+
+
 ###  https://w3id.org/digitalconstruction/0.5/Energy#LifeCycleAssessment
 :LifeCycleAssessment rdf:type owl:Class ;
                      rdfs:subClassOf dici:InformationContentEntity ;
@@ -794,6 +874,17 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                rdfs:subClassOf dicp:CostProperty ;
                rdfs:comment "Lifecycle Cost Parameters for the Energy Systems" ;
                rdfs:label "LifecycleCost" .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Energy#LifeCycleImpact
+:LifeCycleImpact rdf:type owl:Class ;
+                 rdfs:subClassOf dicv:Property ;
+                 rdfs:label "LifeCycleImpact" .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Energy#LifeCycleInventory
+:LifeCycleInventory rdf:type owl:Class ;
+                    rdfs:subClassOf dici:InformationContentEntity .
 
 
 ###  https://w3id.org/digitalconstruction/0.5/Energy#Load
@@ -882,6 +973,18 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                  rdfs:label "OperationalCost" .
 
 
+###  https://w3id.org/digitalconstruction/0.5/Energy#OzoneDepletionPotential
+:OzoneDepletionPotential rdf:type owl:Class ;
+                         rdfs:subClassOf :HumanHealthImpact ;
+                         rdfs:label "OzoneDepletionPotential" .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Energy#ParticulateMatterFormationPotential
+:ParticulateMatterFormationPotential rdf:type owl:Class ;
+                                     rdfs:subClassOf :HumanHealthImpact ;
+                                     rdfs:label "ParticulateMatterFormationPotential" .
+
+
 ###  https://w3id.org/digitalconstruction/0.5/Energy#Photovoltaics
 :Photovoltaics rdf:type owl:Class ;
                rdfs:subClassOf :Generator ;
@@ -932,6 +1035,12 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                     rdfs:label "RenovationScenario" .
 
 
+###  https://w3id.org/digitalconstruction/0.5/Energy#ResourceUseImpact
+:ResourceUseImpact rdf:type owl:Class ;
+                   rdfs:subClassOf :LifeCycleImpact ;
+                   rdfs:label "ResourceUseImpact" .
+
+
 ###  https://w3id.org/digitalconstruction/0.5/Energy#SelfConsumptionOptimization
 :SelfConsumptionOptimization rdf:type owl:Class ;
                              rdfs:subClassOf :DeviceService ;
@@ -952,10 +1061,28 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
          rdfs:label "Storage" .
 
 
+###  https://w3id.org/digitalconstruction/0.5/Energy#SurplusOrePotential
+:SurplusOrePotential rdf:type owl:Class ;
+                     rdfs:subClassOf :ResourceUseImpact ;
+                     rdfs:label "SurplusOrePotential" .
+
+
 ###  https://w3id.org/digitalconstruction/0.5/Energy#TaxRate
 :TaxRate rdf:type owl:Class ;
          rdfs:subClassOf :CostParameter ;
          rdfs:label "TaxRate" .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Energy#TerrestrialAcidificationPotential
+:TerrestrialAcidificationPotential rdf:type owl:Class ;
+                                   rdfs:subClassOf :EcosystemImpact ;
+                                   rdfs:label "TerrestrialAcidificationPotential" .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Energy#WaterConsumptionPotential
+:WaterConsumptionPotential rdf:type owl:Class ;
+                           rdfs:subClassOf :EcosystemImpact ;
+                           rdfs:label "WaterConsumptionPotential" .
 
 
 ###  https://w3id.org/digitalconstruction/0.5/Energy#WaterHeater
