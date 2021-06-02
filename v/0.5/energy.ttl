@@ -756,11 +756,11 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                 rdfs:subClassOf dicv:QuantitativeProperty .
 
 
-###  https://w3id.org/digitalconstruction/0.5/Energy#Engineering
-:Engineering rdf:type owl:Class ;
-             rdfs:subClassOf :LifeCycleCost ;
-             rdfs:comment "Engineering and operation cost for the device" ;
-             rdfs:label "EngineeringCost" .
+###  https://w3id.org/digitalconstruction/0.5/Energy#EngineeringCost
+:EngineeringCost rdf:type owl:Class ;
+                 rdfs:subClassOf :LifeCycleCost ;
+                 rdfs:comment "Engineering and operation cost for the device" ;
+                 rdfs:label "EngineeringCost" .
 
 
 ###  https://w3id.org/digitalconstruction/0.5/Energy#Flexibility
@@ -873,7 +873,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 :LifeCycleCost rdf:type owl:Class ;
                rdfs:subClassOf dicp:CostProperty ;
                rdfs:comment "Lifecycle Cost Parameters for the Energy Systems" ;
-               rdfs:label "LifecycleCost" .
+               rdfs:label "LifeCycleCost" .
 
 
 ###  https://w3id.org/digitalconstruction/0.5/Energy#LifeCycleImpact
