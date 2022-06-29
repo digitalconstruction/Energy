@@ -337,15 +337,9 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 #    Classes
 #################################################################
 
-###  https://w3id.org/digitalconstruction/0.5/Energy#Actuator
-:Actuator rdf:type owl:Class ;
-          rdfs:subClassOf dice:Device ;
-          rdfs:label "Actuator" .
-
-
 ###  https://w3id.org/digitalconstruction/0.5/Energy#ActuatorLevel
 :ActuatorLevel rdf:type owl:Class ;
-               rdfs:subClassOf :Actuator ;
+               rdfs:subClassOf dice:Actuator ;
                rdfs:comment "Independent from the ActuatorSwitch class, the ActuatorLevel class enables a user or application to model LEVEL commands (start, up, percentageAbsolute, relative, etc.). This can be used to dim a light, set the speed of an electric motor, etc." ;
                rdfs:label "ActuatorLevel" .
 
@@ -898,6 +892,11 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
                  rdfs:subClassOf :OperationalCost ;
                  rdfs:comment "Maintenance Costs for the Energy System" ;
                  rdfs:label "MaintenanceCost" .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Energy#Meter
+:Meter rdf:type owl:Class ;
+       rdfs:subClassOf dice:Sensor .
 
 
 ###  https://w3id.org/digitalconstruction/0.5/Energy#NormalizedCoolingEnergyConsumption
